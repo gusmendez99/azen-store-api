@@ -1,0 +1,1 @@
+web: gunicorn azenstoreapi.wsgi --log-file -
