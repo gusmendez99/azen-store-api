@@ -11,8 +11,8 @@ from . import views
 urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^admin/', admin.site.urls),
-    url(r'^rest-auth/', include('rest_auth.urls')),
-    url(r'^rest-auth/registration/', include('rest_auth.registration.urls')),
+    url(r'^api/v1/auth/', include('rest_auth.urls')),
+    url(r'^api/v1/auth/registration/', include('rest_auth.registration.urls')),
     url(r'^api/v1/token-refresh/', refresh_jwt_token),
-    url(r'^rest-auth/facebook/$', views.FacebookLogin.as_view(), name='fb_login')
+    url(r'^api/v1/auth/facebook/$', views.FacebookLogin.as_view(), name='fb_login')
 ]

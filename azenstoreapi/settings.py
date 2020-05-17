@@ -41,6 +41,18 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # Requirement of 10 tables satisfied
+    'product.apps.ProductConfig',
+    'category.apps.CategoryConfig',
+    'coupon.apps.CouponConfig',
+    'cart.apps.CartConfig',
+    'galleryitem.apps.GalleryitemConfig',
+    'order.apps.OrderConfig',
+    'payment.apps.PaymentConfig',
+    'wishlist.apps.WishlistConfig',
+    'invoice.apps.InvoiceConfig',
+    'review.apps.ReviewConfig',
+
     'django.contrib.sites',
     'allauth',
     'allauth.account',
@@ -141,7 +153,36 @@ STATIC_URL = '/static/'
 
 SITE_ID = 2
 
-SOCIAL_AUTH_FACEBOOK_SCOPE = ['email', 'user_link'] # add this
+
+SOCIALACCOUNT_PROVIDERS = {
+    'facebook': {
+        'METHOD': 'oauth2',
+        'SDK_URL': '//connect.facebook.net/{locale}/sdk.js',
+        'SCOPE': ['email', 'public_profile'],
+        'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
+        'INIT_PARAMS': {'cookie': True},
+        'FIELDS': [
+            'id',
+            'email',
+            'name',
+            'first_name',
+            'last_name',
+            'verified',
+            'locale',
+            'timezone',
+            'link',
+            'gender',
+            'updated_time',
+        ],
+        'EXCHANGE_TOKEN': True,
+        'LOCALE_FUNC': 'path.to.callable',
+        'VERIFIED_EMAIL': False,
+        'VERSION': 'v7.0',
+    }
+}
+
+
+""" SOCIAL_AUTH_FACEBOOK_SCOPE = ['email', 'user_link'] # add this
 SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {       # add this
   'fields': 'id, name, email, picture.type(large), link'
 }
@@ -151,11 +192,13 @@ SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = [                 # add this
     ('picture', 'picture'),
     ('link', 'profile_url'),
 ]
+
 SOCIAL_AUTH_PIPELINE = (
     'social_core.pipeline.social_auth.social_details',
     'social_core.pipeline.social_auth.social_uid',
     'social_core.pipeline.social_auth.auth_allowed',
     'social_core.pipeline.social_auth.social_user',
+    'social_auth.backends.pipeline.user.create_user',
     'common.pipeline.require_email',
     'common.pipeline.require_country',
     'common.pipeline.require_city',
@@ -167,7 +210,7 @@ SOCIAL_AUTH_PIPELINE = (
     'social_core.pipeline.social_auth.load_extra_data',
     'social_core.pipeline.user.user_details',
     'social_core.pipeline.debug.debug'
-)
+) """
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
