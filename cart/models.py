@@ -4,7 +4,6 @@ from product.models import Product
 
 # Create your models here.
 class Cart(models.Model):
-    created_at = models.DateTimeField(auto_now_add = True)
     user = models.OneToOneField(
         settings.AUTH_USER_MODEL,
         blank=True, null=True, 
@@ -12,6 +11,9 @@ class Cart(models.Model):
         on_delete=models.CASCADE
     )
     is_ordered = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add = True)
+
+    products = models.ManyToManyField('product.Product', related_name='carts')
 
 class CartItem(models.Model):
     cart = models.ForeignKey(Cart, on_delete=models.CASCADE)

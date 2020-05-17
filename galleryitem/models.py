@@ -11,7 +11,7 @@ class GalleryItem(models.Model):
         blank=False
     )
     image = models.ImageField(max_length=255, null=True, blank=True, upload_to='uploads/gallery/% Y/% m/% d/')
-    date = models.DateField(default=now)
+    created_at = models.DateField(default=now)
 
     def __str__(self):
         return "Image of product {0}".format(self.product)

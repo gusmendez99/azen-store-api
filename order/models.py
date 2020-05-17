@@ -10,9 +10,10 @@ class Order(models.Model):
     )
     delivery_name = models.CharField(max_length=200, null= False)
     delivery_address = models.CharField(max_length=200, null= False)
-    detail = models.CharField(max_length=255, null= False)
+    details = models.CharField(max_length=255, null= False)
     status = models.PositiveIntegerField()
     order_date = models.DateTimeField(default = now)
+    products = models.ManyToManyField('product.Product', through='OrderItem', related_name='orders')
 
     def __str__(self):
         return "Order made by {0} at {1}".format(self.user, self.order_date)

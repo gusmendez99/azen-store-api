@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'wishlist.apps.WishlistConfig',
     'invoice.apps.InvoiceConfig',
     'review.apps.ReviewConfig',
+    'permission.apps.PermissionConfig',
 
     'django.contrib.sites',
     'allauth',

@@ -3,10 +3,15 @@ from django.utils.timezone import now
 from decimal import Decimal
 from django.core.validators import MinValueValidator
 from django.db import models
+from invoice.models import Invoice
 
 class Payment(models.Model):    
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE
+    )
+    invoice = models.OneToOneField(
+        Invoice,
         on_delete=models.CASCADE
     )
     amount = models.DecimalField(max_digits=6, decimal_places=2, default=0.01, validators=[MinValueValidator(Decimal('0.01'))])
