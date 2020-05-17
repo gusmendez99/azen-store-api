@@ -52,20 +52,20 @@ INSTALLED_APPS = [
     'wishlist.apps.WishlistConfig',
     'invoice.apps.InvoiceConfig',
     'review.apps.ReviewConfig',
-    'permission.apps.PermissionConfig',
 
     'django.contrib.sites',
     'allauth',
     'allauth.account',
-    'rest_auth.registration',
-    
+    'rest_auth.registration',    
     'rest_framework',
     'rest_framework.authtoken',
     'guardian',
-
+    'corsheaders',
     'rest_auth',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.facebook',
+
+    'permission.apps.PermissionConfig',
 ]
 
 MIDDLEWARE = [
@@ -105,7 +105,7 @@ WSGI_APPLICATION = 'azenstoreapi.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'azenstore',
+        'NAME': 'azenstoregt',
         'USER': 'root',
         'PASSWORD': 'pinturilloteam',
         'HOST': 'postgresql-9286-0.cloudclusters.net',
@@ -138,7 +138,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Guatemala'
 
 USE_I18N = True
 
@@ -239,3 +239,4 @@ AUTHENTICATION_BACKENDS = (
 )
 
 REST_USE_JWT = True
+CORS_ORIGIN_ALLOW_ALL = True

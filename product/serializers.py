@@ -11,6 +11,6 @@ class ProductSerializer(serializers.ModelSerializer):
             'price',
             'stock',
             'weight',
-            'featured_image'
+            'featured_image',
             'categories',
         )

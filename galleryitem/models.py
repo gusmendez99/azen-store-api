@@ -10,7 +10,7 @@ class GalleryItem(models.Model):
         null=True,
         blank=False
     )
-    image = models.ImageField(max_length=255, null=True, blank=True, upload_to='uploads/gallery/% Y/% m/% d/')
+    image = models.ImageField(max_length=255, null=True, blank=True, upload_to="uploads/gallery/% Y/% m/% d/")
     created_at = models.DateField(default=now)
 
     def __str__(self):
