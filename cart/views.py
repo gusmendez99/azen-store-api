@@ -91,8 +91,6 @@ class CartItemViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         user = self.request.user
         cart_item = serializer.save()
-
-        print(cart_item)
         assign_perm('cartitem.change_cartitem', user, cart_item)
         assign_perm('cartitem.view_cartitem', user, cart_item)
         return Response(serializer.data)

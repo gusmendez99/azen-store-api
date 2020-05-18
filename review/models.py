@@ -16,7 +16,7 @@ class Review(models.Model):
         blank=False
     )
     content = models.CharField(max_length=1000)
-    created_at = models.DateField(default=now)
+    created_at = models.DateTimeField(default=now)
     rate = models.PositiveIntegerField(
         validators=[
             MaxValueValidator(5),

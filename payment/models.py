@@ -14,7 +14,7 @@ class Payment(models.Model):
         Invoice,
         on_delete=models.CASCADE
     )
-    amount = models.DecimalField(max_digits=6, decimal_places=2, default=0.01, validators=[MinValueValidator(Decimal('0.01'))])
+    amount = models.DecimalField(max_digits=10, decimal_places=2, default=0.01, validators=[MinValueValidator(Decimal('0.01'))])
     payment_date = models.DateTimeField(default = now)
 
     def __str__(self):

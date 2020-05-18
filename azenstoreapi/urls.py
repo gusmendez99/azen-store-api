@@ -11,6 +11,14 @@ from rest_framework_jwt.views import (
 from category.views import CategoryViewSet
 from product.views import ProductViewSet
 from cart.views import CartViewSet, CartItemViewSet
+from coupon.views import CouponViewSet
+from order.views import OrderViewSet
+from invoice.views import InvoiceViewSet
+from wishlist.views import WishlistViewSet
+from review.views import ReviewViewSet
+from galleryitem.views import GalleryItemViewSet
+from payment.views import PaymentViewSet
+
 from . import views
 
 router = routers.DefaultRouter()
@@ -19,6 +27,13 @@ router.register(r'categories', CategoryViewSet)
 router.register(r'products', ProductViewSet)
 router.register(r'carts', CartViewSet)
 router.register(r'cart-items', CartItemViewSet)
+router.register(r'coupons', CouponViewSet)
+router.register(r'orders', OrderViewSet)
+router.register(r'invoices', InvoiceViewSet)
+router.register(r'payments', PaymentViewSet)
+router.register(r'wishlists', WishlistViewSet)
+router.register(r'reviews', ReviewViewSet)
+router.register(r'gallery-items', GalleryItemViewSet)
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),
