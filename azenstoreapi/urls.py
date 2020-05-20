@@ -18,11 +18,13 @@ from wishlist.views import WishlistViewSet
 from review.views import ReviewViewSet
 from galleryitem.views import GalleryItemViewSet
 from payment.views import PaymentViewSet
+from user.views import UserViewSet
 
 from . import views
 
 router = routers.DefaultRouter()
 
+router.register(r'users', UserViewSet)
 router.register(r'categories', CategoryViewSet)
 router.register(r'products', ProductViewSet)
 router.register(r'carts', CartViewSet)

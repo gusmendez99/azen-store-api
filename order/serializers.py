@@ -26,4 +26,5 @@ class OrderItemSerializer(serializers.ModelSerializer):
             'quantity',
             'product'
         )
+        depth = 1
 
