@@ -1,6 +1,6 @@
 from django.core.exceptions import PermissionDenied
 from guardian.shortcuts import assign_perm
-from rest_framework import viewsets
+from rest_framework import viewsets, filters
 from rest_framework.decorators import action
 from rest_framework.response import Response
 
@@ -14,6 +14,8 @@ from product.serializers import ProductSerializer
     return user.username == obj.parent.username """
       
 class ProductViewSet(viewsets.ModelViewSet):
+    search_fields = ['name', 'brand']
+    filter_backends = (filters.SearchFilter,)
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
     permission_classes = (

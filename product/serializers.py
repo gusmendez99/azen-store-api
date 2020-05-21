@@ -7,6 +7,7 @@ class ProductSerializer(serializers.ModelSerializer):
         fields = (
             'id',
             'name',
+            'brand',
             'description',
             'price',
             'stock',
