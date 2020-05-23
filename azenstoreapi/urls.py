@@ -3,6 +3,9 @@ from django.contrib import admin
 from django.urls import path
 from rest_framework import routers
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 from rest_framework_jwt.views import (
 #    obtain_jwt_token,
     refresh_jwt_token
@@ -46,3 +49,6 @@ urlpatterns = [
     url(r'^api/v1/token-refresh/', refresh_jwt_token),
     url(r'^api/v1/auth/facebook/$', views.FacebookLogin.as_view(), name='fb_login')
 ]
+
+if settings.DEBUG:
+  urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -7,10 +7,10 @@ class Product(models.Model):
     name = models.CharField(max_length=100, null=False)
     description = models.CharField(max_length=200)
     brand = models.CharField(max_length=120, null=True)
-    price = models.DecimalField(max_digits=6, decimal_places=2, default=0.01, validators=[MinValueValidator(Decimal('0.01'))])
+    price = models.DecimalField(max_digits=8, decimal_places=2, default=0.01, validators=[MinValueValidator(Decimal('0.01'))])
     stock = models.PositiveIntegerField()
-    weight = models.DecimalField(max_digits=6, decimal_places=2, default=0.01, validators=[MinValueValidator(Decimal('0.01'))])
-    featured_image = models.ImageField(upload_to ="uploads/products/% Y/% m/% d/", null=True) 
+    weight = models.DecimalField(max_digits=8, decimal_places=2, default=0.01, validators=[MinValueValidator(Decimal('0.01'))])
+    featured_image = models.ImageField(upload_to ="uploads/products/", null=True) 
 
     categories = models.ManyToManyField('category.Category', related_name="categories")
     
