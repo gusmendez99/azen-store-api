@@ -5,7 +5,9 @@ from rest_framework.decorators import action
 from rest_framework.response import Response
 
 from category.models import Category
+from product.models import Product
 from category.serializers import CategorySerializer
+from product.serializers import ProductSerializer
 from permission.services import APIPermissionClassFactory
 
 """ def evaluate_user(user, obj, request):
@@ -28,6 +30,7 @@ class CategoryViewSet(viewsets.ModelViewSet):
                     'update': lambda user, obj, req: user.is_authenticated,
                     'partial_update': lambda user, obj, req: user.is_authenticated,
                     'perform_create': lambda user, obj, req: user.is_authenticated,
+                    'products': lambda user, obj, req: user.is_authenticated,
                 }
             }
         ),
@@ -40,3 +43,11 @@ class CategoryViewSet(viewsets.ModelViewSet):
         assign_perm('category.change_category', user, category)
         assign_perm('category.view_category', user, category)
         return Response(serializer.data)
+
+    # GET method
+    @action(detail=True, methods=['get'])
+    def products(self, request, pk=None):
+        category = self.get_object()
+        queryset = Product.objects.filter(categories__id = category.id)
+        data = ProductSerializer(queryset, many = True).data
+        return Response(data)

@@ -1,7 +1,7 @@
-import requests
+""" import requests
 from django.core.files import File
 from category.models import Category
-from product.models import Product
+from product.models import Product """
 
 #Categories
 """ category1 = Category(name="Computadoras", icon="computer", description="Computadoras, Laptops")
@@ -31,7 +31,7 @@ category11.save()
 category12.save() """
 
 # Products
-r = requests.get("https://images-na.ssl-images-amazon.com/images/I/41OI4C2VSrL.jpg")
+""" r = requests.get("https://images-na.ssl-images-amazon.com/images/I/41OI4C2VSrL.jpg")
 with open("/tmp/product-1.png", "wb") as f:
     f.write(r.content)
 reopen = open("/tmp/product-1.png", "rb")
@@ -171,6 +171,6 @@ product13_file = File(reopen)
 product13 = Product(name="Escritorio en L", description="Marco blanco de acero /Madera color Negro, 118x82x16 ", brand="XTech", price=1000, stock=30, weight=20)
 product13.save()
 product13.categories.set([13])
-product13.featured_image.save("product-13.png", product13_file, save=True)
+product13.featured_image.save("product-13.png", product13_file, save=True) """
 
 
