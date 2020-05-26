@@ -12,6 +12,7 @@ class OrderSerializer(serializers.ModelSerializer):
             'details',
             'status',
             'order_date',
+            'total',
             'products'
         )
 

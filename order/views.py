@@ -3,6 +3,7 @@ from guardian.shortcuts import assign_perm
 from rest_framework import viewsets
 from rest_framework.decorators import action
 from rest_framework.response import Response
+from decimal import Decimal
 
 from permission.services import APIPermissionClassFactory
 from order.models import Order, OrderItem
@@ -48,9 +49,17 @@ class OrderViewSet(viewsets.ModelViewSet):
             cart_items = CartItem.objects.filter(cart=cart).all()
             self.create_order_items(order, cart_items, user)
             CartItem.objects.filter(cart=cart).delete()
-        
+            order.total = self.get_cart_total_amount(cart_items)
+            order.save()
+
         return Response(serializer.data)
-        
+
+    def get_cart_total_amount(self, cart_items ):
+        total = 0.00
+        for cart_item in cart_items:
+            total += (cart_item.quantity) * float(cart_item.product.price)
+        print("This is my order total: ", total)
+        return Decimal.from_float(total)
 
     # GET method
     @action(detail=True, methods=['get'])

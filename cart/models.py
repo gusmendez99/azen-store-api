@@ -8,7 +8,7 @@ class Cart(models.Model):
         settings.AUTH_USER_MODEL,
         blank=True, null=True, 
         related_name='cart',
-        on_delete=models.CASCADE
+        on_delete=models.DO_NOTHING
     )
     is_ordered = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add = True)
