@@ -5,6 +5,7 @@ from rest_framework.decorators import action
 from rest_framework.response import Response
 
 from invoice.models import Invoice
+from order.models import Order
 from invoice.serializers import InvoiceSerializer
 from permission.services import APIPermissionClassFactory
 
@@ -32,6 +33,14 @@ class InvoiceViewSet(viewsets.ModelViewSet):
             }
         ),
     )
+
+    def get_queryset(self):
+        queryset = Invoice.objects.all()
+        user_id = self.request.query_params.get('user', None)
+        if user_id is not None:
+            orders = Order.objects.filter(user__id=user_id)
+            queryset = queryset.filter(order__in=orders)
+        return queryset
 
     # POST method
     def perform_create(self, serializer):
