@@ -11,4 +11,3 @@ class WishlistSerializer(serializers.ModelSerializer):
             'user',
             'products'
         )
-        depth = 1
