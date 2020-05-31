@@ -33,6 +33,13 @@ class CouponViewSet(viewsets.ModelViewSet):
         ),
     )
 
+    def get_queryset(self):
+        queryset = Coupon.objects.all()
+        coupon_name = self.request.query_params.get('name', None)
+        if coupon_name is not None:
+            queryset = queryset.filter(name=coupon_name)
+        return queryset
+
     # POST method
     def perform_create(self, serializer):
         user = self.request.user

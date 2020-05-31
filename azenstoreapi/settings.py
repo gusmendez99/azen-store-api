@@ -262,3 +262,6 @@ STATICFILES_DIRS = (
 #STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 ALLOWED_HOSTS = ['azenstore.herokuapp.com', 'localhost']
+#On password change
+OLD_PASSWORD_FIELD_ENABLED = True
+LOGOUT_ON_PASSWORD_CHANGE = False
