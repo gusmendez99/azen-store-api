@@ -59,3 +59,9 @@ class WishlistViewSet(viewsets.ModelViewSet):
         data = ProductSerializer(queryset, many = True).data
         return Response(data)
 
+    # @action(detail=True, methods=['patch'])
+    # def whatever(self, request, pk=None):
+    #     wishlist = self.get_object()
+    #     # print(wishlist)
+    #     # wishlist.products.append(self.request.products)
+    #     return Response(WishlistSerializer(wishlist).data)
