@@ -2,6 +2,7 @@ from rest_framework import serializers
 from review.models import Review
 
 class ReviewSerializer(serializers.ModelSerializer):
+    username = serializers.SerializerMethodField()
     class Meta:
         model = Review
         fields = (
@@ -10,5 +11,9 @@ class ReviewSerializer(serializers.ModelSerializer):
             'product',
             'created_at',
             'rate',
-            'content'
+            'content',
+            'username'
         )
+
+    def get_username(self, obj):
+        return obj.user.username
