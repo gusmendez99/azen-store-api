@@ -33,6 +33,13 @@ class ReviewViewSet(viewsets.ModelViewSet):
         ),
     )
 
+    def get_queryset(self):
+        queryset = Review.objects.all()
+        product_id = self.request.query_params.get('product', None)
+        if product_id is not None:
+            queryset = queryset.filter(product__id=product_id)
+        return queryset
+
     # POST method
     def perform_create(self, serializer):
         user = self.request.user
