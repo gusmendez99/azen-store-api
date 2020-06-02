@@ -5,6 +5,11 @@ from rest_framework.decorators import action
 from rest_framework.response import Response
 from decimal import Decimal
 
+#For invoice PDF
+from datetime import datetime, date
+from pyinvoice.models import InvoiceInfo, ServiceProviderInfo, ClientInfo, Item, Transaction
+from pyinvoice.templates import SimpleInvoice
+
 from permission.services import APIPermissionClassFactory
 from order.models import Order, OrderItem
 from cart.models import Cart, CartItem
@@ -59,7 +64,55 @@ class OrderViewSet(viewsets.ModelViewSet):
             order.total = self.get_cart_total_amount(cart_items)
             order.save()
 
+            # Generating PDF
+            if user.email != None or user.email != '':
+                pdf = self.generate_pdf(order, user)
+                self.send_invoice_via_email(pdf, user.email)
+
+
         return Response(serializer.data)
+
+    def generate_pdf(self, order, user):
+        invoice_doc = SimpleInvoice('invoice.pdf')
+
+        # Paid stamp, optional
+        invoice_doc.is_paid = False
+        invoice_doc.invoice_info = InvoiceInfo(order.id, datetime.now(), datetime.now())  # Invoice info, optional
+
+        # Service Provider Info, optional
+        invoice_doc.service_provider_info = ServiceProviderInfo(
+            name='Azen Store',
+            street='Somewhere in Guatemala',
+            city='Guatemala',
+            state='Guatemala',
+            country='Guatemala',
+            post_code='0100X',
+        )
+
+        order_items = OrderItem.objects.filter(order=order).all()
+
+        # Client info, optional
+        invoice_doc.client_info = ClientInfo(client_id= user.id, name=user.username)
+
+        for order_item in order_items:
+            # Add Item
+            invoice_doc.add_item(Item(order_item.product.name, 'Item', order_item.quantity, order_item.product.price))
+        
+        # Tax rate, optional
+        invoice_doc.set_item_tax_rate(0)  # 0%
+
+        # Transactions detail, optional
+        #invoice_doc.add_transaction(Transaction('Paypal', 111, datetime.now(), 1))
+        #invoice_doc.add_transaction(Transaction('Stripe', 222, date.today(), 2))
+
+        # Optional
+        invoice_doc.set_bottom_tip("Email: info@azenstore.com<br />Don't hesitate to contact us for any questions.<br />Coupons are applied in payments...")
+
+        invoice_doc.finish()
+        return invoice_doc
+
+    def send_invoice_via_email(self, pdf, email):
+        print("Sending email to {0}...".format(email))
 
     def get_cart_total_amount(self, cart_items ):
         total = 0.00
