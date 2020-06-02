@@ -66,8 +66,8 @@ class OrderViewSet(viewsets.ModelViewSet):
 
             # Generating PDF
             if user.email != None or user.email != '':
-                pdf = self.generate_pdf(order, user)
-                self.send_invoice_via_email(pdf, user.email)
+                self.generate_pdf(order, user)
+                self.send_invoice_via_email(user.email)
 
 
         return Response(serializer.data)
@@ -109,7 +109,6 @@ class OrderViewSet(viewsets.ModelViewSet):
         invoice_doc.set_bottom_tip("Email: info@azenstore.com<br />Don't hesitate to contact us for any questions.<br />Coupons are applied in payments...")
 
         invoice_doc.finish()
-        return invoice_doc
 
     def send_invoice_via_email(self, pdf, email):
         print("Sending email to {0}...".format(email))
