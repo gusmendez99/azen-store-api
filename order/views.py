@@ -1,3 +1,4 @@
+import os
 from django.core.exceptions import PermissionDenied
 from guardian.shortcuts import assign_perm
 from rest_framework import viewsets
@@ -16,6 +17,11 @@ from cart.models import Cart, CartItem
 
 from order.serializers import OrderSerializer, OrderItemSerializer
 from product.serializers import ProductSerializer
+
+import base64
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import (Mail, Attachment, FileContent, FileName, FileType, Disposition)
+from django.conf import settings
 
 class OrderViewSet(viewsets.ModelViewSet):
     queryset = Order.objects.all()
@@ -100,18 +106,38 @@ class OrderViewSet(viewsets.ModelViewSet):
         
         # Tax rate, optional
         invoice_doc.set_item_tax_rate(0)  # 0%
-
-        # Transactions detail, optional
-        #invoice_doc.add_transaction(Transaction('Paypal', 111, datetime.now(), 1))
-        #invoice_doc.add_transaction(Transaction('Stripe', 222, date.today(), 2))
-
         # Optional
         invoice_doc.set_bottom_tip("Email: info@azenstore.com<br />Don't hesitate to contact us for any questions.<br />Coupons are applied in payments...")
 
         invoice_doc.finish()
 
-    def send_invoice_via_email(self, pdf, email):
+    def send_invoice_via_email(self, email):
         print("Sending email to {0}...".format(email))
+        
+        message = Mail(
+            from_email='gus.mendez.99@gmail.com',
+            to_emails=email,
+            subject='New Order - Azen Store',
+            html_content='<strong>Your order has been received. Thanks for your purchase.</strong>')
+
+
+        with open(os.path.join(settings.BASE_DIR, "invoice.pdf"), 'rb') as f:
+            file_data = f.read()
+            f.close()
+            
+            encoded_file = base64.b64encode(file_data).decode()
+
+            attachedFile = Attachment(
+                FileContent(encoded_file),
+                FileName('attachment.pdf'),
+                FileType('application/pdf'),
+                Disposition('attachment')
+            )
+            message.attachment = attachedFile
+
+        sg = SendGridAPIClient("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")
+        response = sg.send(message)
+        print(response.status_code, response.body, response.headers)
 
     def get_cart_total_amount(self, cart_items ):
         total = 0.00

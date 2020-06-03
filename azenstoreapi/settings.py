@@ -217,9 +217,9 @@ SOCIAL_AUTH_PIPELINE = (
     'social_core.pipeline.debug.debug'
 ) """
 
-#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-EMAIL_BACKEND = "sendgrid_backend.SendgridBackend"
-SENDGRID_API_KEY = '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'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+#EMAIL_BACKEND = "sendgrid_backend.SendgridBackend"
+#SENDGRID_API_KEY = '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'
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
@@ -248,6 +248,7 @@ REST_USE_JWT = True
 
 MEDIA_ROOT = os.path.join(BASE_DIR, '')
 MEDIA_URL = '/media/'
+PDF_PATH = os.path.join(BASE_DIR, '')
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
