@@ -109,11 +109,11 @@ WSGI_APPLICATION = 'azenstoreapi.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'azenstoregt',
+        'NAME': 'azenstore',
         'USER': 'root',
-        'PASSWORD': 'pinturilloteam',
-        'HOST': 'postgresql-9286-0.cloudclusters.net',
-        'PORT': '9286',
+        'PASSWORD': '1234',
+        'HOST': 'postgresql-9746-0.cloudclusters.net',
+        'PORT': '9746',
     }
 }
 

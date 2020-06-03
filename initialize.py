@@ -28,18 +28,18 @@ category7.save()
 category8.save()
 category9.save()
 category10.save()
-category11.save()
-category12.save() """
+category11.save() """
+category12.save()
 
 # Products
-""" r = requests.get("https://images-na.ssl-images-amazon.com/images/I/41OI4C2VSrL.jpg")
+r = requests.get("https://images-na.ssl-images-amazon.com/images/I/41OI4C2VSrL.jpg")
 with open("/tmp/product-1.png", "wb") as f:
     f.write(r.content)
 reopen = open("/tmp/product-1.png", "rb")
 product1_file = File(reopen)
 product1 = Product(name="ASUS ROG Strix G (2019)", description="Nvidia GeForce GTX 1650 4GB GDDR5,  Intel Core i7-9750h Hexa-Core, 16GB de RAM", brand="ASUS", price=11500, stock=30, weight=2.26)
 product1.save()
-product1.categories.set([3, 14])
+product1.categories.set([1, 12])
 product1.featured_image.save("product-1.png", product1_file, save=True)
 
 
@@ -50,7 +50,7 @@ reopen = open("/tmp/product-2.png", "rb")
 product2_file = File(reopen)
 product2 = Product(name="MacBook Pro", description="Intel Core i7 7ma gen., Intel UHD Graphics 630, 512 GB SDD, 8GB de RAM", brand="Apple", price=14000, stock=30, weight=2)
 product2.save()
-product2.categories.set([3])
+product2.categories.set([1])
 product2.featured_image.save("product-2.png", product2_file, save=True)
 
 
@@ -61,7 +61,7 @@ reopen = open("/tmp/product-3.png", "rb")
 product3_file = File(reopen)
 product3 = Product(name="ASUS ROG Gaming Phone II", description="Qualcomm Snapdragon 855 Plus - Octa-core 2.96GHz, 12GB RAM, Cámara de 48MP, pantalla AMOLED", brand="ASUS", price=7500, stock=30, weight=0.25)
 product3.save()
-product3.categories.set([4, 14])
+product3.categories.set([2, 12])
 product3.featured_image.save("product-3.png", product3_file, save=True)
 
 
@@ -72,7 +72,7 @@ reopen = open("/tmp/product-4.png", "rb")
 product4_file = File(reopen)
 product4 = Product(name="SSD Kingston 2.5''SA400S37/120GB", description="Capacidad de 120GB, 10 veces más veloz que un HDD, interfaz SATA", brand="Kingston", price=300, stock=30, weight=0.25)
 product4.save()
-product4.categories.set([5])
+product4.categories.set([3])
 product4.featured_image.save("product-4.png", product4_file, save=True)
 
 
@@ -83,7 +83,7 @@ reopen = open("/tmp/product-5.png", "rb")
 product5_file = File(reopen)
 product5 = Product(name="RAM HyperX 16GB RGB", description="RAM de 16GB, DDR4, con RGB, 3733 MHz", brand="HyperX", price=500, stock=30, weight=0.04)
 product5.save()
-product5.categories.set([6])
+product5.categories.set([4])
 product5.featured_image.save("product-5.png", product5_file, save=True)
 
 
@@ -94,7 +94,7 @@ reopen = open("/tmp/product-6.png", "rb")
 product6_file = File(reopen)
 product6 = Product(name="Dell 27'' P2719H", description="Monitor Dell 1920x1080px, 27'', 60 Hz, aspecto 16:9", brand="Dell", price=1980, stock=30, weight=4.35)
 product6.save()
-product6.categories.set([7])
+product6.categories.set([5])
 product6.featured_image.save("product-6.png", product6_file, save=True)
 
 
@@ -105,7 +105,7 @@ reopen = open("/tmp/product-7.png", "rb")
 product7_file = File(reopen)
 product7 = Product(name="Mouse Logitech G203 RGB", description="Mouse ideal para gaming, 8.000 DPI, RGB, una rapidez 8 veces superior a la de los mouse estándar", brand="Logitech", price=300, stock=30, weight=0.08)
 product7.save()
-product7.categories.set([8, 14])
+product7.categories.set([6, 12])
 product7.featured_image.save("product-7.png", product7_file, save=True)
 
 
@@ -116,7 +116,7 @@ reopen = open("/tmp/product-8.png", "rb")
 product8_file = File(reopen)
 product8 = Product(name="Teclado Logitech G513 RGB", description="Teclado gaming G513 es un teclado para juegos de alto desempeño con interruptores mecánicos avanzados GX a elegir. Trae RGB", brand="Logitech", price=700, stock=30, weight=1.11)
 product8.save()
-product8.categories.set([8, 14])
+product8.categories.set([6, 12])
 product8.featured_image.save("product-8.png", product8_file, save=True)
 
 
@@ -127,7 +127,7 @@ reopen = open("/tmp/product-9.png", "rb")
 product9_file = File(reopen)
 product9 = Product(name="SmartTV Samsung UN50RU7100 50''", description="Smart TV Samsung 4K-Ultra HD con Apple AirPlay integrado. Edge LED, 3840x2160 pixels, 50 Hz/60 Hz", brand="Samsung", price=3999, stock=30, weight=1.11)
 product9.save()
-product9.categories.set([9])
+product9.categories.set([7])
 product9.featured_image.save("product-9.png", product9_file, save=True)
 
 
@@ -138,7 +138,7 @@ reopen = open("/tmp/product-10.png", "rb")
 product10_file = File(reopen)
 product10 = Product(name="Headsets HyperX Cloud 2", description="Audífonos con sonido surround virtual 7.1 para tu PC, gaming, cancelación pasiva del sonido.", brand="HyperX", price=800, stock=30, weight=0.32)
 product10.save()
-product10.categories.set([10, 14])
+product10.categories.set([8, 12])
 product10.featured_image.save("product-10.png", product10_file, save=True)
 
 
@@ -149,7 +149,7 @@ reopen = open("/tmp/product-11.png", "rb")
 product11_file = File(reopen)
 product11 = Product(name="Impresora Canon G1110", description="La Impresora Canon G1110 PIXMA está equipada con tanques de tinta integrados de fácil recarga que proveen una capacidad de tinta mayor y un rendimiento", brand="Canon", price=900, stock=30, weight=4.30)
 product11.save()
-product11.categories.set([11])
+product11.categories.set([9])
 product11.featured_image.save("product-11.png", product11_file, save=True)
 
 
@@ -160,7 +160,7 @@ reopen = open("/tmp/product-12.png", "rb")
 product12_file = File(reopen)
 product12 = Product(name="Nvidia GeForce RTX 2080 Ti", description="Su potente arquitectura de GPU NVIDIA Turing ™, tecnologías innovadoras y 11 GB de memoria GDDR6 la convierten en la GPU de juegos más avanzada del mundo", brand="NVIDIA", price=12000, stock=30, weight=4.30)
 product12.save()
-product12.categories.set([12, 14])
+product12.categories.set([10, 12])
 product12.featured_image.save("product-12.png", product12_file, save=True)
 
 
@@ -171,12 +171,12 @@ reopen = open("/tmp/product-13.png", "rb")
 product13_file = File(reopen)
 product13 = Product(name="Escritorio en L", description="Marco blanco de acero /Madera color Negro, 118x82x16 ", brand="XTech", price=1000, stock=30, weight=20)
 product13.save()
-product13.categories.set([13])
-product13.featured_image.save("product-13.png", product13_file, save=True) """
+product13.categories.set([11])
+product13.featured_image.save("product-13.png", product13_file, save=True)
 
 # Gallery Items
 
-""" product = Product.objects.filter(id=5).first()
+product = Product.objects.filter(id=1).first()
 
 r = requests.get("https://images-na.ssl-images-amazon.com/images/I/811QpiYXe-L._AC_SL1500_.jpg")
 with open("/tmp/gallery-1.png", "wb") as f:
@@ -198,7 +198,7 @@ gallery_item_2.image.save("gallery-2.png", gallery2_file, save=True)
 
 
 
-product = Product.objects.filter(id=6).first()
+product = Product.objects.filter(id=2).first()
 
 r = requests.get("https://www.souqbaba.com/wp-content/uploads/2018/12/APPLE-MACBOOK-PRO-2018-MR9R2-SPACE-GREY-I5-8TH-GEN.-2.3-QUAD-CORE-8GB-512GB.png")
 with open("/tmp/gallery-3.png", "wb") as f:
@@ -222,7 +222,7 @@ gallery_item_4.image.save("gallery-2.png", gallery4_file, save=True)
 
 
 
-product = Product.objects.filter(id=7).first()
+product = Product.objects.filter(id=3).first()
 
 r = requests.get("https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQDAwxQ363OHCv8hwLG6k4qUHV5Z6d4Rghz5q2zxVdmhQkTCnde&usqp=CAU")
 with open("/tmp/gallery-5.png", "wb") as f:
@@ -247,7 +247,7 @@ gallery_item_6.image.save("gallery-6.png", gallery6_file, save=True)
 
 
 
-product = Product.objects.filter(id=8).first()
+product = Product.objects.filter(id=4).first()
 
 r = requests.get("https://static.kemikcdn.com/2017/06/sa400s37-120gb-422x571.jpg")
 with open("/tmp/gallery-7.png", "wb") as f:
@@ -272,7 +272,7 @@ gallery_item_8.image.save("gallery-8.png", gallery8_file, save=True)
 
 
 
-product = Product.objects.filter(id=9).first()
+product = Product.objects.filter(id=5).first()
 
 r = requests.get("https://www.cyberpuerta.mx/img/product/L/CP-HYPERX-HX432C16PB3A8-3.jpg")
 with open("/tmp/gallery-9.png", "wb") as f:
@@ -297,7 +297,7 @@ gallery_item_10.image.save("gallery-10.png", gallery10_file, save=True)
 
 
 
-product = Product.objects.filter(id=10).first()
+product = Product.objects.filter(id=6).first()
 
 r = requests.get("https://cdn.cnetcontent.com/bf/5f/bf5f8232-afbe-412e-b8bf-e204bdc9173c.jpg")
 with open("/tmp/gallery-11.png", "wb") as f:
@@ -323,7 +323,7 @@ gallery_item_12.image.save("gallery-12.png", gallery12_file, save=True)
 
 
 
-product = Product.objects.filter(id=11).first()
+product = Product.objects.filter(id=7).first()
 
 r = requests.get("https://c1.neweggimages.com/NeweggImage/ProductImage/26-197-252-Z01.jpg")
 with open("/tmp/gallery-13.png", "wb") as f:
@@ -347,7 +347,7 @@ gallery_item_14.image.save("gallery-14.png", gallery14_file, save=True)
 
 
 
-product = Product.objects.filter(id=12).first()
+product = Product.objects.filter(id=8).first()
 
 r = requests.get("https://www.macrosistemas.com/images/virtuemart/product/teclado-18.jpg")
 with open("/tmp/gallery-15.png", "wb") as f:
@@ -372,7 +372,7 @@ gallery_item_16.image.save("gallery-16.png", gallery16_file, save=True)
 
 
 
-product = Product.objects.filter(id=13).first()
+product = Product.objects.filter(id=9).first()
 
 r = requests.get("https://cdn.lumingo.com/medias/0100124913-000000000004649641-0-c515Wx515H?context=bWFzdGVyfGltYWdlc3wxODkzNHxpbWFnZS9qcGVnfGltYWdlcy9oN2YvaDQ3LzkwOTI5NzUxOTgyMzguanBnfGZhYTY4MTg1YTAzZDhiMmZlODhmNDA0NjczNGE5NDZlNWRhOTk1MmYzMzEwZTY3NTc5ZDI4NmI3N2MzZDE3YTU")
 with open("/tmp/gallery-17.png", "wb") as f:
@@ -398,7 +398,7 @@ gallery_item_18.image.save("gallery-18.png", gallery18_file, save=True)
 
 
 
-product = Product.objects.filter(id=14).first()
+product = Product.objects.filter(id=10).first()
 
 r = requests.get("https://m.media-amazon.com/images/I/71eSPhz0IjL.jpg")
 with open("/tmp/gallery-19.png", "wb") as f:
@@ -422,7 +422,7 @@ gallery_item_20.image.save("gallery-20.png", gallery20_file, save=True)
 
 
 
-product = Product.objects.filter(id=15).first()
+product = Product.objects.filter(id=11).first()
 
 r = requests.get("https://www.tiendacanon.com.mx/wcsstore/CMEXCatalogAssetStore/G1110_AS_FR_cl_xl.jpg")
 with open("/tmp/gallery-21.png", "wb") as f:
@@ -446,7 +446,7 @@ gallery_item_22.image.save("gallery-22.png", gallery22_file, save=True)
 
 
 
-product = Product.objects.filter(id=16).first()
+product = Product.objects.filter(id=12).first()
 
 r = requests.get("https://easetec.com.pk/wp-content/uploads/2019/05/91Qg5K-cmfL._SL1500_.jpg")
 with open("/tmp/gallery-23.png", "wb") as f:
@@ -473,7 +473,7 @@ gallery_item_24.image.save("gallery-24.png", gallery24_file, save=True)
 
 
 
-product = Product.objects.filter(id=17).first()
+product = Product.objects.filter(id=13).first()
 
 r = requests.get("https://my.accvent.com/images/stories/virtuemart/product/xtf-cd4333.png")
 with open("/tmp/gallery-25.png", "wb") as f:
@@ -491,5 +491,6 @@ reopen = open("/tmp/gallery-26.png", "rb")
 gallery26_file = File(reopen)
 gallery_item_26 = GalleryItem(product=product)
 gallery_item_26.save()
-gallery_item_26.image.save("gallery-26.png", gallery26_file, save=True) """
+gallery_item_26.image.save("gallery-26.png", gallery26_file, save=True)
 
+ """
