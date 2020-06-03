@@ -1,11 +1,11 @@
-"""import requests
+import requests
 from django.core.files import File
 from category.models import Category
 from product.models import Product
-from galleryitem.models import GalleryItem"""
+from galleryitem.models import GalleryItem
 
 #Categories
-""" category1 = Category(name="Computadoras", icon="computer", description="Computadoras, Laptops")
+category1 = Category(name="Computadoras", icon="computer", description="Computadoras, Laptops")
 category2 = Category(name="Telefonos", icon="smartphone", description="Android y iOS")
 category3 = Category(name="Disco Duro", icon="storage", description="HDD y SSD")
 category4 = Category(name="Memorias", icon="memory", description="RAM")
@@ -28,7 +28,7 @@ category7.save()
 category8.save()
 category9.save()
 category10.save()
-category11.save() """
+category11.save()
 category12.save()
 
 # Products
@@ -492,5 +492,3 @@ gallery26_file = File(reopen)
 gallery_item_26 = GalleryItem(product=product)
 gallery_item_26.save()
 gallery_item_26.image.save("gallery-26.png", gallery26_file, save=True)
-
- """
