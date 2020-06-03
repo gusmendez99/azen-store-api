@@ -219,7 +219,7 @@ SOCIAL_AUTH_PIPELINE = (
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 #EMAIL_BACKEND = "sendgrid_backend.SendgridBackend"
-#SENDGRID_API_KEY = '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'
+SENDGRID_API_KEY = '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'
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [

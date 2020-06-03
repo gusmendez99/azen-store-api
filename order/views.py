@@ -115,7 +115,7 @@ class OrderViewSet(viewsets.ModelViewSet):
         print("Sending email to {0}...".format(email))
         
         message = Mail(
-            from_email='gus.mendez.99@gmail.com',
+            from_email='men18500@uvg.edu.gt',
             to_emails=email,
             subject='New Order - Azen Store',
             html_content='<strong>Your order has been received. Thanks for your purchase.</strong>')
@@ -135,7 +135,7 @@ class OrderViewSet(viewsets.ModelViewSet):
             )
             message.attachment = attachedFile
 
-        sg = SendGridAPIClient("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")
+        sg = SendGridAPIClient(settings.SENDGRID_API_KEY)
         response = sg.send(message)
         print(response.status_code, response.body, response.headers)
 
