@@ -13,7 +13,7 @@ class Wishlist(models.Model):
         on_delete=models.CASCADE
     )
 
-    products = models.ManyToManyField('product.Product', related_name='wishlists')
+    products = models.ManyToManyField('product.Product', related_name='wishlists', blank=True)
 
     def __str__(self):
         return self.name
