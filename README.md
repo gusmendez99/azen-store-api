@@ -1,4 +1,4 @@
-<a href="http://fvcproductions.com"><img src="https://www.buythelogo.com/wp-content/uploads/2019/03/Letter-E-geometric-line-abstract-shape-logo-vector.jpg" title="FVCproductions" alt="FVCproductions" height=200 ></a>
+<a href="http://github.com/gusmendez99/AzenStoreMobile"><img src="https://i.imgur.com/SKZIB6d.jpg" title="FVCproductions" alt="FVCproductions" height=200 ></a>
 
 # Azen Store API
 
@@ -15,6 +15,7 @@
     - [Clone](#clone)
     - [Setup](#setup)
   - [Features](#features)
+  - [Routes](#routes)
   - [Team](#team)
   - [License](#license)
 
@@ -74,6 +75,86 @@ $ python manage.py runserver
 - JWT Authentication
 - Social Account Auth
 
+## Routes
+
+Here are the main routes used in the API
+
+*  Auth
+   * Email Register (POST)
+      * http://azenstore.herokuapp.com/api/v1/auth/registration/
+   * Facebook Register/Login (POST)
+      * http://azenstore.herokuapp.com/api/v1/auth/facebook/
+   * Login (POST)
+      * http://azenstore.herokuapp.com/api/v1/auth/login/
+   * Token Refresh (POST)
+      * http://azenstore.herokuapp.com/api/v1/token-refresh/
+*  Categories
+   * Get Categories (GET)
+      * https://azenstore.herokuapp.com/api/v1/categories/
+   * Create Category (POST)
+      * https://azenstore.herokuapp.com/api/v1/categories/
+*  Products
+   * Get Products (GET)
+      * http://azenstore.herokuapp.com/api/v1/products/
+   * Create Product (POST)
+      * http://azenstore.herokuapp.com/api/v1/products/
+   * Get Product Categories (GET)
+      * http://azenstore.herokuapp.com/api/v1/products/1/categories/
+*  Carts
+   * Get Carts (GET)
+      * http://azenstore.herokuapp.com/api/v1/carts/
+   * Create Cart (POST)
+      * http://azenstore.herokuapp.com/api/v1/carts/
+   * Get Cart Items (GET)
+      * http://azenstore.herokuapp.com/api/v1/cart-items/
+   * Add Cart Item (POST)
+      * http://azenstore.herokuapp.com/api/v1/cart-items/
+   * Remove Cart Item (DELETE)
+      * http://azenstore.herokuapp.com/api/v1/cart-items/1/
+   * Update Cart Item (PUT)
+      * http://azenstore.herokuapp.com/api/v1/cart-items/1/
+   * Clear Cart (POST)
+      * http://azenstore.herokuapp.com/api/v1/carts/1/clear/
+   * Get Cart By User Id (GET)
+      * https://azenstore.herokuapp.com/api/v1/carts?user=1
+   * Get Cart Items given a user id (GET)
+      * http://azenstore.herokuapp.com/api/v1/users/7/cart-items/
+*  Coupons
+   * Get Coupons (GET)
+      * https://azenstore.herokuapp.com/api/v1/coupons/  
+*  Orders
+   * Get Orders (GET)
+      * http://azenstore.herokuapp.com/api/v1/orders/
+   * Create Order (POST)
+      * http://azenstore.herokuapp.com/api/v1/orders/    
+   * Process Order (Cleans Cart) (POST)
+      * http://azenstore.herokuapp.com/api/v1/orders/1/process/
+*  Wishlists
+   * Get Wishlists (GET)
+      * http://azenstore.herokuapp.com/api/v1/wishlists/
+   * Create Wishlist (POST)
+      * http://azenstore.herokuapp.com/api/v1/wishlists/
+   * Get Wishlist given a userId (GET)
+      * http://azenstore.herokuapp.com/api/v1/wishlists/?user=5
+   * Get Wishlist Products (GET)
+      * http://azenstore.herokuapp.com/api/v1/wishlists/1/products/
+*  Invoices
+   * Get Invoices (GET)
+      * http://azenstore.herokuapp.com/api/v1/invoices/
+   * Create Invoice (POST)
+      * http://azenstore.herokuapp.com/api/v1/invoices/
+*  Payments
+   * Get Payments (GET)
+      * http://azenstore.herokuapp.com/api/v1/payments/
+   * Create Payment (POST)
+      * http://azenstore.herokuapp.com/api/v1/payments/       
+*  Reviews
+   * Get Reviews (GET)
+      * http://azenstore.herokuapp.com/api/v1/reviews/
+   * Create Reviews (POST)
+      * http://azenstore.herokuapp.com/api/v1/reviews/     
+
+  
 
 ## Team
 
